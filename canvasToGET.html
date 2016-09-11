@@ -2,6 +2,7 @@
 <p id='link'>double click to generate image link</p>
 <script>
 var c = document.getElementById('c');
+var ctx = c.getContext('2d')
 var paint = false
 window.onmousemove = draw
 window.onmousedown = toggle
@@ -13,11 +14,17 @@ else		{ paint = true;     }
 }
 
 function draw(e){
-var rect = document.getElementById('c').getBoundingClientRect();
-if (paint) 	 c.getContext('2d').fillRect(e.x - rect.left,e.y - rect.top,1,1)
+var rect =  c.getBoundingClientRect();
+if (paint)  ctx.fillRect(e.x - rect.left,e.y - rect.top,1,1)
 }
 
 function save(){
+var digit = new Image();
+digit.src = c.toDataURL();      // draw a 4x4 boarder
+c.width = 28
+c.height = 28
+ctx.drawImage(digit,4,4);
+
 var q = c.toDataURL()
 while (q.indexOf("+") != -1)    q = q.replace('+', '%2B');
 document.getElementById("link").innerHTML = '<a href='
