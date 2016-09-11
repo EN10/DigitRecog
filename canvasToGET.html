@@ -2,18 +2,26 @@
 <p id='link'>double click to generate image link</p>
 <script>
 var c = document.getElementById('c');
-window.ondblclick = save
+var paint = false
 window.onmousemove = draw
+window.onmousedown = toggle
+window.ondblclick = save
+
+function toggle(){ 
+if (paint)	{ paint = false;    }
+else		{ paint = true;     }
+}
 
 function draw(e){
 var rect = document.getElementById('c').getBoundingClientRect();
-c.getContext('2d').fillRect(e.x - rect.left,e.y - rect.top,1,1)
+if (paint) 	 c.getContext('2d').fillRect(e.x - rect.left,e.y - rect.top,1,1)
 }
 
 function save(){
-var data = encodeURI(c.toDataURL()); // otherwise special chars are lost
+var q = c.toDataURL()
+while (q.indexOf("+") != -1)    q = q.replace('+', '%2B');
 document.getElementById("link").innerHTML = '<a href='
-+ 'https://mnist-en10.c9users.io/?q=' + data
++ 'https://mnist-en10.c9users.io/?q=' + q
 + '>click to send image</a>'
 }
 </script>

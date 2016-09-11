@@ -13,7 +13,7 @@ var cmd = 'python predictDigit.py';
     exec(cmd, function(error, stdout, stderr) {
         res.end(stdout);
         console.log(stdout);
-    });
+    }); 
 });
 
 app.listen(process.env.PORT, function() {
