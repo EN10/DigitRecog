@@ -1,6 +1,6 @@
-Handwriting Recognition on Digits using Canvas and Tensorflow
+Handwriting Recognition on Digits using Canvas and TensorFlow
 
-Using a simple MNIST trained model on Tensorflow for digit recognition. Based on this:  
+Using a simple MNIST trained model on TensorFlow for digit recognition. Based on this:  
 https://www.tensorflow.org/versions/master/tutorials/mnist/beginners/index.html
 
 Uses HTML5 Canvas to draw the digit in canvasToGET.html
@@ -20,3 +20,6 @@ It runs the model on the array and print a prediction.
 Coded and tested on:    
 https://ide.c9.io/en10/mnist9.io/en10/mnist     
 https://preview.c9users.io/en10/mnist/canvasToGET.html
+
+install TensorFlow see installTF.txt    
+https://www.tensorflow.org/versions/master/get_started/os_setup.html#pip-installation
