@@ -25,10 +25,18 @@ c.width = 28
 c.height = 28
 ctx.drawImage(digit,4,4);
 
-var q = c.toDataURL()
-while (q.indexOf("+") != -1)    q = q.replace('+', '%2B');
+var imgData = ctx.getImageData(0, 0, 28, 28);
+var imgBlack = []
+for (var i = 0; i < imgData.data.length; i += 4) {
+if (imgData.data[i+3] === 255) imgBlack.push(1)
+else imgBlack.push(0)
+}
+
+var dataStr = JSON.stringify(imgBlack)
+console.log(dataStr)
+
 document.getElementById("link").innerHTML = '<a href='
-+ 'https://mnist-en10.c9users.io/?q=' + q
++ 'https://mnist-en10.c9users.io/?q=' + dataStr
 + '>click to send image</a>'
 }
 </script>

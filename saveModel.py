@@ -22,3 +22,7 @@ with tf.Session() as sess:
         
     save_path = saver.save(sess, "model.ckpt")
     print ("Model saved in file: ", save_path)
+    
+    #f = open('train0', 'w')
+    #f.write(str(mnist.train.images[0]))
+    #f.close()

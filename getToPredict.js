@@ -4,8 +4,7 @@ var fs = require('fs');
 var exec = require('child_process').exec;
 
 app.get("/", function(req, res) {
-var data = req.query.q.replace(/^data:image\/\w+;base64,/, '');
-    fs.writeFile('digit.png', data, {encoding: 'base64'}, function(err){
+    fs.writeFile('JSON.txt', req.query.q, function(err){
         console.log(err);
     });
 
@@ -13,7 +12,9 @@ var cmd = 'python predictDigit.py';
     exec(cmd, function(error, stdout, stderr) {
         res.end(stdout);
         console.log(stdout);
-    }); 
+        console.log(stderr);
+    });
+
 });
 
 app.listen(process.env.PORT, function() {
