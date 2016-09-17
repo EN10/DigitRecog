@@ -18,6 +18,6 @@ predictDigit.py reads the txt file, parses the JSON into an array.
 It then loads the model created by saveModel.py
 It runs the model on the array and print a prediction.
 
-Coded and tested on:
-https://ide.c9.io/en10/mnist9.io/en10/mnist
+Coded and tested on:    
+https://ide.c9.io/en10/mnist9.io/en10/mnist 
 https://preview.c9users.io/en10/mnist/canvasToGET.html
