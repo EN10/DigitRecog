@@ -1,11 +1,13 @@
 Handwriting Recognition on Digits using Canvas and TensorFlow
 
-Using a simple MNIST trained model on TensorFlow for digit recognition. Based on this:  
-https://www.tensorflow.org/versions/master/tutorials/mnist/beginners/index.html
+Based on a simple softmax MNIST trained model on TensorFlow for digit recognition.    
+https://www.tensorflow.org/versions/master/tutorials/mnist/beginners/index.html     
+With a second layer added with ReLU and randomised starting weights.    
+Performance is improved from 92% to 96% from only softmax.  
 
 Uses HTML5 Canvas to draw the digit in canvasToGET.html
 
-Click is used to toggle drawing on / off    
+Click to draw, Double click to clear canvas.   
 Drawing area is 20 x 20 this is centered on a 28 x 28 canvas producing a white boarder  
 The white boarder is how the training set images have been prepared.    
 The pixels are extracted from the alpha channel(rgba) and converted into JSON to be sent as a GET request.
