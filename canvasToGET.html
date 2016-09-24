@@ -1,29 +1,44 @@
-<canvas id='c' width='20' height='20' style='border:1px solid black;'></canvas>
-<p id='link'>click to toggle draw then double click to generate link</p>
+<h1>Digit Recognition</h1>
+<p>Click anywhere to toggle draw ON and OFF Double Click anywhere to Clear</p>
+<h3 id="toggle">Draw OFF</h3>
+<img id="img" style="visibility=hidden;">
+<canvas id='c' width='500' height='500' style='border:1px solid black;'></canvas> <p>
+<button id="save" onclick="save()">Generate Link</button>
+<p id='link'></p>
 <script>
 var c = document.getElementById('c');
 var ctx = c.getContext('2d')
 var paint = false
-window.onmousemove = draw
+var hidden = false
 window.onmousedown = toggle
-window.ondblclick = save
+window.onmousemove = draw
+window.ondblclick = clear
 
 function toggle(){ 
-if (paint)	{ paint = false;    }
-else		{ paint = true;     }
+if (paint)	{ paint = false;    document.getElementById("toggle").innerHTML = "Draw OFF";}
+else		{ paint = true;     document.getElementById("toggle").innerHTML = "Draw ON"; }
 }
 
 function draw(e){
 var rect =  c.getBoundingClientRect();
-if (paint)  ctx.fillRect(e.x - rect.left,e.y - rect.top,1,1)
+if (paint && !hidden)  ctx.fillRect(e.x - rect.left,e.y - rect.top,50,50)
+}
+
+function clear(){
+ctx.clearRect(0,0,500,500);
 }
 
 function save(){
+document.getElementById('toggle').style.visibility = 'hidden';
+document.getElementById('save').style.visibility = 'hidden';
 var digit = new Image();
-digit.src = c.toDataURL();      // draw a 4x4 boarder
+digit.src = c.toDataURL();
 c.width = 28
 c.height = 28
-ctx.drawImage(digit,4,4);
+ctx.drawImage(digit,4,4,20,20); // add 4x4 border & shrink
+document.getElementById('img').src = c.toDataURL();
+document.getElementById('c').style.visibility = 'hidden';
+hidden = true   // is canvas still editable if hidden?
 
 var imgData = ctx.getImageData(0, 0, 28, 28);
 var imgBlack = []
