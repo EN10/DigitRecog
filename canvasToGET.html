@@ -1,5 +1,5 @@
 <h1>Digit Recognition</h1>
-<p>Click to draw Double Click anywhere to Clear</p>
+<p id='head'>Click to draw Double Click anywhere to Clear</p>
 <h3 id="toggle">Draw OFF</h3>
 <img id="img" style="visibility=hidden;">
 <canvas id='c' width='500' height='500' style='border:1px solid black;'></canvas> <p>
@@ -35,15 +35,16 @@ ctx.clearRect(0,0,500,500);
 }
 
 function save(){
-document.getElementById('toggle').style.visibility = 'hidden';
-document.getElementById('save').style.visibility = 'hidden';
+document.getElementById('head').style.display = 'none';
+document.getElementById('toggle').style.display = 'none';
+document.getElementById('save').style.display = 'none';
 var digit = new Image();
 digit.src = c.toDataURL();
 c.width = 28
 c.height = 28
 ctx.drawImage(digit,4,4,20,20); // add 4x4 border & shrink
 document.getElementById('img').src = c.toDataURL();
-document.getElementById('c').style.visibility = 'hidden';
+document.getElementById('c').style.display = 'none';
 hidden = true   // is canvas still editable if hidden?
 
 var imgData = ctx.getImageData(0, 0, 28, 28);
@@ -58,6 +59,6 @@ console.log(dataStr)
 
 document.getElementById("link").innerHTML = '<a href='
 + 'https://mnist-en10.c9users.io/?q=' + dataStr
-+ '>click to send image</a>'
++ '>Click to Send Image</a>'
 }
 </script>
