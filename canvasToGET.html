@@ -3,8 +3,8 @@
 <h3 id="toggle">Draw OFF</h3>
 <img id="img" style="visibility=hidden;">
 <canvas id='c' width='500' height='500' style='border:1px solid black;'></canvas> <p>
+<span id='link'>Click Generate Link after drawing Digit </span>
 <button id="save" onclick="save()">Generate Link</button>
-<p id='link'></p>
 <script>
 var c = document.getElementById('c');
 var ctx = c.getContext('2d')
@@ -12,6 +12,7 @@ var paint = false
 var hidden = false
 window.onmousedown = toggle
 window.onmousemove = draw
+window.onmouseup = drawoff
 window.ondblclick = clear
 
 function toggle(){ 
@@ -22,6 +23,11 @@ else		{ paint = true;     document.getElementById("toggle").innerHTML = "Draw ON
 function draw(e){
 var rect =  c.getBoundingClientRect();
 if (paint && !hidden)  ctx.fillRect(e.x - rect.left,e.y - rect.top,50,50)
+}
+
+function drawoff(){ 
+paint = false;    
+document.getElementById("toggle").innerHTML = "Draw OFF";
 }
 
 function clear(){
