@@ -38,16 +38,16 @@ function save(){
 document.getElementById('head').style.display = 'none';
 document.getElementById('toggle').style.display = 'none';
 document.getElementById('save').style.display = 'none';
-var digit = new Image();
-digit.src = c.toDataURL();
-c.width = 28
-c.height = 28
-ctx.drawImage(digit,4,4,20,20); // add 4x4 border & shrink
-document.getElementById('img').src = c.toDataURL();
+let c1 = document.createElement("canvas");
+let ctx1 = c1.getContext('2d')
+c1.width = 28
+c1.height = 28
+ctx1.drawImage(c, 4, 4, 20, 20); // add 4x4 border & shrink
+document.getElementById('img').src = c1.toDataURL();
 document.getElementById('c').style.display = 'none';
 hidden = true   // is canvas still editable if hidden?
 
-var imgData = ctx.getImageData(0, 0, 28, 28);
+var imgData = ctx1.getImageData(0, 0, 28, 28);
 var imgBlack = []
 for (var i = 0; i < imgData.data.length; i += 4) {
 if (imgData.data[i+3] === 255) imgBlack.push(1)
